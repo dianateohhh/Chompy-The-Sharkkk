@@ -1,0 +1,6 @@
+const audio=document.getElementById('audio'),play=document.getElementById('play'),progress=document.getElementById('progress'),current=document.getElementById('current'),duration=document.getElementById('duration');
+const fmt=s=>{if(!isFinite(s))return '0:00'; const m=Math.floor(s/60),sec=Math.floor(s%60).toString().padStart(2,'0'); return `${m}:${sec}`};
+play.onclick=()=>{if(audio.paused)audio.play();else audio.pause()};
+audio.addEventListener('play',()=>play.textContent='Ⅱ');audio.addEventListener('pause',()=>play.textContent='▶');audio.addEventListener('loadedmetadata',()=>duration.textContent=fmt(audio.duration));audio.addEventListener('timeupdate',()=>{current.textContent=fmt(audio.currentTime);progress.value=audio.duration?audio.currentTime/audio.duration*100:0});progress.oninput=()=>{if(audio.duration)audio.currentTime=progress.value/100*audio.duration};
+document.getElementById('back').onclick=()=>audio.currentTime=Math.max(0,audio.currentTime-15);document.getElementById('forward').onclick=()=>audio.currentTime=Math.min(audio.duration||0,audio.currentTime+15);
+document.querySelectorAll('[data-speed]').forEach(b=>b.onclick=()=>{audio.playbackRate=Number(b.dataset.speed);document.querySelectorAll('[data-speed]').forEach(x=>x.classList.remove('active'));b.classList.add('active')});

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1677c8">
+<title>Chompy the Shark — Audiobook</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="cover-wrap">
+      <img src="images/cover.jpg" alt="Chompy the Shark book cover" class="cover">
+    </div>
+    <div class="intro">
+      <p class="eyebrow">AUDIOBOOK</p>
+      <h1>Chompy the Shark</h1>
+      <p class="author">Arnie Lightning</p>
+      <p class="narrated">Narrated by you</p>
+      <button class="listen" onclick="document.getElementById('player').scrollIntoView({behavior:'smooth'})">▶ Listen to the story</button>
+    </div>
+  </section>
+
+  <section class="player-card" id="player">
+    <div class="chapter-label">CHAPTER 01</div>
+    <h2>Chompy the Shark</h2>
+    <audio id="audio" preload="metadata" src="audio/chapter-01.mp3"></audio>
+    <div class="controls">
+      <button class="circle" id="back" aria-label="Back 15 seconds">↶<span>15</span></button>
+      <button class="play" id="play" aria-label="Play">▶</button>
+      <button class="circle" id="forward" aria-label="Forward 15 seconds">↷<span>15</span></button>
+    </div>
+    <div class="timeline">
+      <span id="current">0:00</span>
+      <input type="range" id="progress" min="0" max="100" value="0" step="0.1" aria-label="Audio progress">
+      <span id="duration">0:00</span>
+    </div>
+    <div class="speed-row">
+      <span>Playback speed</span>
+      <div class="speeds">
+        <button data-speed="0.75">0.75×</button>
+        <button data-speed="1" class="active">1×</button>
+        <button data-speed="1.25">1.25×</button>
+        <button data-speed="1.5">1.5×</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About this audiobook</h2>
+    <p>A personal narrated edition of <em>Chompy the Shark</em>. Put on your headphones, get comfortable, and enjoy the story.</p>
+  </section>
+
+  <section class="qr-card">
+    <div class="qr-placeholder" id="qrBox">QR</div>
+    <div>
+      <h2>Listen on your phone</h2>
+      <p>Once this page is hosted online, replace the QR link with your public audiobook URL and print it on a card, gift, or inside the book.</p>
+    </div>
+  </section>
+
+  <footer>Made with love · Chompy the Shark</footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
